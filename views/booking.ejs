@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Booking</title>
+    <link rel="stylesheet" href="/booking.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Booking Form -->
+        <form id="bookingForm" action="/booking" method="POST">
+            <!-- Phone Number Input Section -->
+            <div class="phone-section">
+                <label for="phone">Phone Number</label>
+                <div class="phone-input">
+                    <span class="country-code">+91</span>
+                    <input type="text" id="phone" name="phone" placeholder="1234567890" required>
+                </div>
+            </div>
+
+            <!-- User Info Fields -->
+            <div class="user-section">
+                <h3>Customer Information</h3>
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="you@example.com" required>
+
+                <label for="address">Address</label>
+                <textarea id="address" name="address" placeholder="Enter your address" required></textarea>
+            </div>
+
+            <!-- Auto-filled Fields (Car Information and Service Package) -->
+            <div class="car-info-section">
+                <h3>Car and Service Information</h3>
+                <label for="car-make">Car Make</label>
+                <input type="text" id="car-make" name="carMake" readonly>
+
+                <label for="car-model">Car Model</label>
+                <input type="text" id="car-model" name="carModel" readonly>
+
+                <label for="vehicle-no">Vehicle Number</label>
+                <input type="text" id="vehicle-no" name="vehicleNo" placeholder="Enter Vehicle Number" required>
+
+                <label for="service-package">Selected Service Package</label>
+                <input type="text" id="service-package" name="servicePackage" readonly>
+
+                <label for="service-price">Service Package Price</label>
+                <input type="text" id="service-price" name="servicePrice" readonly>
+            </div>
+
+            <!-- Date and Time Section -->
+            <div class="date-time-section">
+                <h3>Select Date and Time of Service</h3>
+                <input type="date" id="service-date" name="serviceDate" required>
+                <input type="time" id="service-time" name="serviceTime" required>
+            </div>
+
+            <!-- Pickup Address Section -->
+            <div class="pickup-section">
+                <h3>Pickup Address</h3>
+                <label for="pickup-address">Pickup Address</label>
+                <input type="text" id="pickup-address" name="pickupAddress" placeholder="Enter your pickup address" required>
+            </div>
+
+            <!-- Payment Mode Section -->
+            <div class="payment-section">
+                <h3>Payment Mode</h3>
+                <p><strong>Cash on Delivery</strong></p>
+            </div>
+            <input type="hidden" name="totalPay" id="totalPay">
+
+
+            <!-- Payment Section -->
+            <div class="payment-section">
+                <h3>Bill Details</h3>
+                <div class="bill-details">
+                    <p>Item Total: <span id="item-total">₹ 3569</span></p>
+                    <p>Safety & Warranty Fees: <span>₹ 99</span></p>
+                    <p class="total">You Pay: <span id="total-price" name="totalPrice">₹ 3668</span></p>
+                </div>
+                <button type="submit" class="submit-btn">Submit booking</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Populate form fields from session storage on page load
+        document.addEventListener('DOMContentLoaded', function () {
+            const carMake = sessionStorage.getItem('carMake');
+            const carModel = sessionStorage.getItem('carModel');
+            const servicePackage = sessionStorage.getItem('selectedService');
+            const servicePrice = sessionStorage.getItem('selectedPrice');
+
+            // Fill the fields if data is present
+            if (carMake) {
+                document.getElementById('car-make').value = carMake;
+            }
+            if (carModel) {
+                document.getElementById('car-model').value = carModel;
+            }
+            if (servicePackage) {
+                document.getElementById('service-package').value = servicePackage;
+            }
+            if (servicePrice) {
+                document.getElementById('service-price').value = servicePrice;
+                document.getElementById('item-total').innerText = servicePrice;
+
+                // Calculate total price
+                const priceValue = parseInt(servicePrice.replace('₹', '').trim());
+                const totalPrice = priceValue + 99; // Adding the fixed Safety & Warranty Fees
+                document.getElementById('total-price').innerText = '₹ ' + totalPrice;
+                document.getElementById('totalPay').value = totalPrice;
+            }
+        });
+
+        document.getElementById('bookingForm').addEventListener('submit', function (event) {
+            // Prevent form submission for validation
+            event.preventDefault();
+
+            // Validate Phone Number
+            const phoneInput = document.getElementById('phone');
+            const phoneValue = phoneInput.value.trim();
+            const phonePattern = /^[6-9]\d{9}$/;
+
+            if (!phonePattern.test(phoneValue)) {
+                alert('Please enter a valid 10-digit phone number starting with 6-9.');
+                phoneInput.focus();
+                return false;
+            }
+
+            // Validate Name
+            const nameInput = document.getElementById('name');
+            const nameValue = nameInput.value.trim();
+            if (nameValue === '') {
+                alert('Please enter your name.');
+                nameInput.focus();
+                return false;
+            }
+
+            // Validate Email
+            const emailInput = document.getElementById('email');
+            const emailValue = emailInput.value.trim();
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!emailPattern.test(emailValue)) {
+                alert('Please enter a valid email address.');
+                emailInput.focus();
+                return false;
+            }
+
+            // Validate Address
+            const addressInput = document.getElementById('address');
+            const addressValue = addressInput.value.trim();
+            if (addressValue === '') {
+                alert('Please enter your address.');
+                addressInput.focus();
+                return false;
+            }
+
+            // Validate Vehicle Number
+            const vehicleInput = document.getElementById('vehicle-no');
+            const vehicleValue = vehicleInput.value.trim();
+            const vehiclePattern = /^[A-Z]{2}\d{2}[A-Z]{1,2}\d{4}$/;
+
+            if (!vehiclePattern.test(vehicleValue)) {
+                alert('Please enter a valid vehicle number (e.g., MH12AB1234).');
+                vehicleInput.focus();
+                return false;
+            }
+            
+
+            // Validate Service Date
+            const serviceDate = document.getElementById('service-date').value;
+            const currentDate = new Date().toISOString().split('T')[0];
+
+            if (serviceDate === '' || serviceDate < currentDate) {
+                alert('Please select a valid service date.');
+                return false;
+            }
+
+            // Validate Service Time
+            const serviceTime = document.getElementById('service-time').value;
+            if (serviceTime === '') {
+                alert('Please select a valid service time.');
+                return false;
+            }
+            
+
+
+            // If all validations pass, submit the form
+            this.submit();
+        });
+    </script>
+
+</body>
+
+</html>

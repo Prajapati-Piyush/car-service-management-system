@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Confirmation - CarCrafters</title>
+    <link rel="stylesheet" href="/confirm.css"> <!-- Link to your CSS file -->
+    <link rel="shortcut icon" href="/img/favicon-32x32.png" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <h1>Appointment Confirmation</h1>
+    </header>
+    <main>
+        <h2>Thank you for booking your appointment!</h2>
+        <p>Your appointment has been successfully booked.</p>
+        <a href="/">Go to Home</a> <!-- Link back to the home page -->
+    </main>
+    
+    <!-- Audio element -->
+    <audio id="congratulations-sound" src="/sound/confirm.mp3" preload="auto"></audio>
+    
+    <script>
+        // Play sound when the page loads
+        window.onload = function() {
+            document.getElementById("congratulations-sound").play();
+        };
+    </script>
+</body>
+</html>

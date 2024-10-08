@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart</title>
+    <!-- Adjust the path to your CSS file -->
+    <link rel="stylesheet" href="/viewAppointment.css">
+</head>
+
+<body>
+    <!-- Header Section with Navigation -->
+    <header>
+        <h1>Your Cart</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/services">Services</a>
+            <a href="/logout">Logout</a>
+            <!-- Add more navigation items as needed -->
+        </nav>
+    </header>
+
+    <!-- Main Content Section -->
+    <main>
+        <h2>Your Bookings</h2>
+        <div id="cart-items">
+            <% if (bookings.length > 0) { %>
+                <!-- Loop through all the bookings -->
+                <% bookings.forEach(booking => { %>
+                    <div class="booking-item">
+                        <h3>Service: <%= booking.servicePackage %></h3>
+                        <p>Price: ₹<%= booking.servicePrice %></p>
+                        <p>Date: <%= booking.serviceDate %></p>
+                        <p>Time: <%= booking.serviceTime %></p>
+                        <p>Vehicle No: <%= booking.vehicle_no %></p>
+                        <p>Car Model: <%= booking.carModel %></p>
+                        <p>Service  Status: <%= booking.serviceStatus %></p>
+                        
+                        <!-- Cancel Button -->
+                        <form action="/cancel-booking/<%= booking._id %>" method="POST">
+                            <button type="submit">Cancel Booking</button>
+                        </form>
+                        
+                    <hr> <!-- Separator between bookings -->
+                <% }) %>
+            <% } else { %>
+                <!-- Show message if no bookings -->
+                <p>Your cart is empty.</p>
+            <% } %>
+        </div>
+    </main>
+</body>
+
+</html>

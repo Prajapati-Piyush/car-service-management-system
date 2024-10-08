@@ -1,0 +1,86 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 28px;
+}
+
+nav {
+    margin-top: 10px;
+}
+
+nav a {
+    color: #fff;
+    margin: 0 15px;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+main {
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+#cart-items {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.booking-item {
+    padding: 15px;
+}
+
+.booking-item h3 {
+    margin: 0;
+    font-size: 20px;
+    color: #333;
+}
+
+.booking-item p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #555;
+}
+
+button[type="submit"] {
+    background-color: #ff4d4d;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #e60000;
+}
+
+#total-amount {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #333;
+    font-weight: bold;
+    text-align: right;
+}

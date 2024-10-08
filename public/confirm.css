@@ -1,0 +1,116 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f9f9f9; /* Light background color */
+    color: #333; /* Dark text color */
+    padding: 0px;
+    margin: 0;
+}
+
+/* Header styles */
+header {
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    padding: 10px 0;
+    text-align: center; /* Centered text */
+}
+
+/* Main content styles */
+main {
+    max-width: 600px; /* Max width for main content */
+    margin: 20px auto; /* Center the main content */
+    padding: 20px;
+    background-color: white; /* White background for main content */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Heading styles */
+h1 {
+    font-size: 2.5em; /* Larger font size for main heading */
+    margin-bottom: 10px; /* Space below heading */
+}
+
+h2 {
+    font-size: 1.8em; /* Medium font size for secondary heading */
+    margin-bottom: 15px; /* Space below secondary heading */
+}
+
+/* Paragraph styles */
+p {
+    margin-bottom: 10px; /* Space below paragraphs */
+}
+
+/* Strong text styles */
+strong {
+    color: #4CAF50; /* Green color for highlighted text */
+}
+
+/* Link styles */
+a {
+    display: inline-block; /* Block display for links */
+    margin-top: 20px; /* Space above the link */
+    padding: 10px 15px; /* Padding for the link */
+    background-color: #4CAF50; /* Green background for links */
+    color: white; /* White text color */
+    text-decoration: none; /* Remove underline */
+    border-radius: 5px; /* Rounded corners for the button */
+    transition: background-color 0.3s; /* Smooth background color transition */
+}
+
+a:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    /* On smaller tablets and phones, reduce padding and font size */
+    main {
+        margin: 10px;
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 2em; /* Slightly smaller heading */
+    }
+
+    h2 {
+        font-size: 1.6em; /* Slightly smaller secondary heading */
+    }
+
+    a {
+        padding: 8px 12px; /* Adjust button size */
+    }
+}
+
+@media (max-width: 480px) {
+    /* On small phones, adjust layout and font sizes further */
+    body {
+        font-size: 14px; /* Adjust base font size for readability */
+    }
+
+    main {
+        margin: 5px;
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 1.8em; /* Smaller heading */
+    }
+
+    h2 {
+        font-size: 1.4em; /* Smaller secondary heading */
+    }
+
+    a {
+        padding: 6px 10px; /* Smaller button size */
+    }
+}

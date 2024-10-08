@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarCrafters - Mastering Auto Care</title>
+    <!--Link To Css-->
+    <link rel="stylesheet" href="/style1.css">
+    <link rel="shortcut icon" href="/img/favicon-32x32.png" type="image/x-icon">
+    <!--Box Icons-->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <!--Navbar-->
+    <header>
+        <div class="nav container">
+            <i class='bx bx-menu' id="menu-icon"></i>
+            <a href="/" class="logo">Car<span>Crafters</span></a>
+            <ul class="navbar">
+                <li><a href="/" class="active">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/services">Services</a></li>
+                <li><a href="/viewAppointment">Carts</a></li>
+                <li>
+                    <!-- Check if user is logged in -->
+                    <% if (user && user.role==='user' ) { %>
+                        <!-- Show for regular users -->
+                        <i class="fa-solid fa-user"></i>
+                        <a href="/">
+                            <%= user.name %> <!-- Display the username -->
+                        </a>
+                        <a href="/logout" class="logout-link">Logout</a>
+                        <% } else if (user && user.role==='admin' ) { %>
+                            <!-- Show for admins -->
+                            <i class="fa-solid fa-user-shield"></i>
+                            <a href="/admin">
+                                Admin <%= user.adminName %> <!-- Display the admin name -->
+                            </a>
+                            <a href="/logout" class="logout-link">Logout</a>
+                            <% } else { %>
+                                <!-- Show login link if no one is logged in -->
+                                <a href="/login">Login</a>
+                                <% } %>
+                </li>
+            </ul>
+            <i class='bx bx-search' id="search-icon"></i>
+            <div class="search-box container">
+                <input type="search" name="" id="" placeholder="Search here...">
+            </div>
+        </div>
+    </header>
+
+
+
+    <!--Home section-->
+    <section class="home" id="home">
+        <div class="home-text">
+            <h1>We have Everthing <br> your <span>car</span> Need</h1>
+            <p>Get ready to hit the road with confidence! <br> Our expert services ensure your vehicle runs smoothly and
+                safely.</p>
+            <!--home Button-->
+            <a href="/services" class="btn">Discover Now</a>
+        </div>
+
+    </section>
+    <!--cars section-->
+    <section class="cars" id="cars">
+        <div class="heading">
+            <span>Quality Services</span>
+            <h2>We are Committed to Quality</h2>
+            <p>Car Crafters takes your car <br>Services and repair seriously and goes the extra mile to deliver the best
+                quality</p>
+        </div>
+        <!--Cars container-->
+        <div class="carsss">
+            <div class="imggg">
+                <img src="/img/r2.jpg" alt="">
+            </div>
+            <div class="qualities">
+                <div class="qqq">
+                    <h4>Quality</h4>
+                    <p>at every stage of the process</p>
+                </div>
+                <div class="qqq">
+                    <h4>Genuine Spares</h4>
+                    <p>quality parts for all brands</p>
+                </div>
+                <div class="qqq">
+                    <h4>Attention</h4>
+                    <p>to the minutest details for accuracy</p>
+                </div>
+                <div class="qqq">
+                    <h4>Toyota Genuine</h4>
+                    <p>directly from the Toyota warehouse</p>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!--About-->
+    <section>
+        <section class="about container" id="about">
+            <div class="about-img">
+                <img src="/img/r1.jpg" alt="">
+            </div>
+            <div class="about-text">
+                <span>About Us</span>
+                <h2>Cheap Prices With <br> Quality Services</h2>
+                <p>Get ready to hit the road with confidence! <br> Our expert services ensure your vehicle runs smoothly
+                    and safely.</p>
+                <!--About Button-->
+                <a href="/about" class="btn">Learn More</a>
+            </div>
+        </section>
+    </section>
+    <!--parts section-->
+    
+    <!--Blog Container-->
+    <section class="blog" id="blog">
+        <!-- How It Works Section -->
+        <div class="how-it-works">
+            <h2>How Our Service Works?</h2>
+            <div class="steps-container">
+                <!-- Step 1 -->
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <div class="step-title">Book Your Service Online</div>
+                        <div class="step-description">Choose the car service you need from a variety of options.
+                            Convenient online booking to get started.</div>
+                    </div>
+                    <img src="/img/car1.png" alt="Car Icon 1" class="step-icon">
+                </div>
+
+                <!-- Step 2 -->
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <div class="step-title">Free Pick-Up & Drop</div>
+                        <div class="step-description">We’ll come to your location, pick up your vehicle, and return it
+                            after the service—hassle-free and reliable.</div>
+                    </div>
+                    <img src="/img/carPickup.png" alt="Car Icon 2" class="step-icon">
+                </div>
+
+                <!-- Step 3 -->
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <div class="step-title">Transparent Pricing</div>
+                        <div class="step-description">Get upfront pricing with no hidden costs. We’ll provide a
+                            breakdown of the services and parts used.</div>
+                    </div>
+                    <img src="/img/affordable.png" alt="Car Icon 3" class="step-icon">
+                </div>
+
+                <!-- Step 4 -->
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <div class="step-title">Quality Inspection & Delivery</div>
+                        <div class="step-description">After the service, we inspect your vehicle to ensure everything is
+                            perfect. Then, we’ll deliver it back to you, ready to go!</div>
+                    </div>
+                    <img src="/img/inspection.png" alt="Car Icon 5" class="step-icon">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--footer-->
+    <section class="footer">
+        <div class="footer-container container">
+            <div class="footer-box">
+                <a href="#" class="logo">Car<span>Crafters</span></a>
+                <div class="social">
+                    <a href="https://github.com/Anand19987i/" target="_blank"><i class='bx bxl-github'></i></a>
+                    <a href="https://x.com/" target="_blank"><i class='bx bxl-twitter'></i></a>
+                    <a href="https://www.linkedin.com/in/anand-pandey-5b5875253/" target="_blank"><i
+                            class='bx bxl-linkedin'></i></a>
+                </div>
+                <div class="contact">
+                    <h3>Contact :</h3>
+                    <p>1234567890</p>
+                </div>
+                <div class="address">
+                    <h3>Address :</h3>
+                    <p>Shop no. 5 , Oil Stn. Road , Bhandup(w) ,Mumbai - 40008</p>
+                </div>
+            </div>
+            <div class="footer-box">
+                <h3>Page</h3>
+                <a href="/index">Home</a>
+                <a href="/about">About</a>
+                <a href="/services">Services</a>
+                <a href="/viewAppointment">Carts</a>
+            </div>
+
+            <div class="footer-box">
+                <h3>Legal</h3>
+                <a href="#">Privacy</a>
+                <a href="#">Refund Policy</a>
+                <a href="#">Cookies Policy</a>
+            </div>
+
+            <div class="footer-box">
+                <h3>Contact</h3>
+                <p>United States</p>
+                <p>Canada</p>
+                <p> Jaban</p>
+                <p>Germany</p>
+            </div>
+        </div>
+    </section>
+
+    <!--Copyright-->
+    <div class="copyright">
+        <p>&#169; Car<span>Crafters</span> All Right Reserved</p>
+    </div>
+
+    <!--Link To JS-->
+    <script>
+        let search = document.querySelector('.search-box');
+
+        document.querySelector('#search-icon').onclick = () => {
+            search.classList.toggle('active');
+            menu.classList.remove('active');
+        }
+
+        let menu = document.querySelector('.navbar');
+
+        document.querySelector('#menu-icon').onclick = () => {
+            menu.classList.toggle('active');
+            search.classList.remove('active');
+        }
+
+        // Hide Menu And Search Box On Scroll
+        window.onscroll = () => {
+            menu.classList.remove('active');
+            search.classList.remove('active');
+
+        }
+        //header
+        let header = document.querySelector('header');
+
+
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('shadow', window.scrollY > 0);
+
+        });
+    </script>
+
+</body>
+
+</html>

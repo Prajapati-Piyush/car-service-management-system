@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - CarCrafters</title>
+    <link rel="stylesheet" href="/about.css">
+    <link rel="stylesheet" href="/style1.css">
+    <link rel="shortcut icon" href="/img/favicon-32x32.png" type="image/x-icon">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header>
+        <div class="nav container">
+            <i class='bx bx-menu' id="menu-icon"></i>
+            <a href="#" class="logo">Car<span>Crafters</span></a>
+            <ul class="navbar">
+                <li><a href="/">Home</a></li>
+                <li><a href="/about" class="active">About</a></li>
+                <li><a href="/services">Services</a></li>
+                <li>
+                    <!-- Check if user is logged in -->
+                    <% if (user) { %>
+                        <i class="fa-solid fa-user"></i>
+                        <a href="/about">
+                            <%= user.name %>
+                        </a>
+                        <!-- <a href="/logout" class="logout-link">Logout</a> Add logout link -->
+                    <% } else { %>
+                        <a href="/login">Login</a>
+                    <% } %>
+                </li>
+            </ul>
+            <i class='bx bx-search' id="search-icon"></i>
+            <div class="search-box container">
+                <input type="search" name="" id="" placeholder="Search here...">
+            </div>
+        </div>
+    </header>
+    
+    <!-- Header -->
+    <div class="header">
+        <h1>About Us</h1>
+        <p>Your trusted car service partner</p>
+    </div>
+
+    <!-- Main content -->
+    <main>
+        <!-- Our Story Section -->
+        <section class="about-section">
+            <div class="about-image">
+                <img src="img/r3.jpg" alt="Car Service Team">
+            </div>
+            <div class="about-text">
+                <h2>Our Story</h2>
+                <p>Welcome to <strong>Car Crafters</strong>, your trusted partner for all your car service and repair needs. Founded with a passion for delivering high-quality car services, we aim to provide reliable and efficient solutions that keep your vehicle running smoothly and safely on the road. We take pride in offering personalized service and a commitment to customer satisfaction.</p>
+                
+                <h2>Our Mission</h2>
+                <p>At <strong>Car Crafters</strong>, our mission is simple: to provide the highest standard of car maintenance and repairs at every stage of the process. Whether it's routine servicing or major repairs, we strive to exceed expectations by using only genuine parts and the latest technology.</p>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services-section">
+            <h2>Our Services</h2>
+            <div class="services">
+                <div class="service-box">
+                    <h3>Routine Maintenance</h3>
+                    <p>Keep your car running smoothly with our expert maintenance services.</p>
+                </div>
+                <div class="service-box">
+                    <h3>Engine Repairs</h3>
+                    <p>We offer engine diagnostics, repairs, and full overhauls for all car models.</p>
+                </div>
+                <div class="service-box">
+                    <h3>Tire & Wheel Services</h3>
+                    <p>From tire rotations to new wheel installations, we have you covered.</p>
+                </div>
+                <div class="service-box">
+                    <h3>Battery Replacements</h3>
+                    <p>Ensure your car starts every time with our quick and easy battery replacement service.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Values Section -->
+        <section class="values-section">
+            <h2>Why Choose Us?</h2>
+            <div class="values">
+                <div class="value-box">
+                    <h3>Quality Services</h3>
+                    <p>We ensure top-notch quality in all our services by using advanced diagnostic tools and certified technicians.</p>
+                </div>
+                <div class="value-box">
+                    <h3>Expert Technicians</h3>
+                    <p>Our team consists of highly skilled professionals with years of experience in the car service industry.</p>
+                </div>
+                <div class="value-box">
+                    <h3>Genuine Parts</h3>
+                    <p>We only use authentic parts for repairs to maintain the integrity of your vehicle and extend its lifespan.</p>
+                </div>
+                <div class="value-box">
+                    <h3>Customer Satisfaction</h3>
+                    <p>We take customer satisfaction seriously and work hard to deliver a smooth and hassle-free experience.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials-section">
+            <h2>What Our Clients Say</h2>
+            <div class="testimonials">
+                <div class="testimonial">
+                    <p>"The service was excellent! My car has never run better. Highly recommend Car Crafters!"</p>
+                    <h4>- John Doe</h4>
+                </div>
+                <div class="testimonial">
+                    <p>"Fast, reliable, and affordable. Car Crafters has become my go-to car service provider!"</p>
+                    <h4>- Jane Smith</h4>
+                </div>
+                <div class="testimonial">
+                    <p>"I appreciate their attention to detail and use of genuine parts. My car feels brand new again!"</p>
+                    <h4>- David Brown</h4>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section">
+            <h2>Contact Us</h2>
+            <p>If you have any questions or need assistance with your vehicle, don't hesitate to reach out. We're here to help!</p>
+            <p><strong>Email:</strong> CarCrafters@support.com</p>
+            <p><strong>Phone:</strong>+91 70397 93720</p>
+            <p><strong>Location:</strong> Mumbai - 400078</p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <section class="footer">
+        <div class="footer-container container">
+            <div class="footer-box">
+                <a href="#" class="logo">Car<span>Crafters</span></a>
+                <div class="social">
+                    <a href="#"><i class='bx bxl-facebook'></i></a>
+                    <a href="#"><i class='bx bxl-twitter'></i></a>
+                    <a href="#"><i class='bx bxl-instagram'></i></a>
+                    <a href="#"><i class='bx bxl-youtube'></i></a>
+                </div>
+            </div>
+            <div class="footer-box">
+                <h3>Page</h3>
+                <a href="#">Home</a>
+                <a href="#">Cars</a>
+                <a href="#">Parts</a>
+                <a href="#">Sales</a>
+            </div>
+
+            <div class="footer-box">
+                <h3>Legal</h3>
+                <a href="#">Privacy</a>
+                <a href="#">Refund Policy</a>
+                <a href="#">Cookies Policy</a>
+            </div>
+
+            <div class="footer-box">
+                <h3>Contact</h3>
+                <p>United States</p>
+                <p>Canada</p>
+                <p> Jaban</p>
+                <p>Germany</p>
+            </div>
+        </div>
+    </section>
+    <div class="copyright">
+        <p>&#169; Car<span>Crafters</span> All Right Reserved</p>
+    </div>
+    <script>
+        let search = document.querySelector('.search-box');
+
+        document.querySelector('#search-icon').onclick = () => {
+            search.classList.toggle('active');
+            menu.classList.remove('active');
+        }
+
+        let menu = document.querySelector('.navbar');
+
+        document.querySelector('#menu-icon').onclick = () => {
+            menu.classList.toggle('active');
+            search.classList.remove('active');
+        }
+
+        // Hide Menu And Search Box On Scroll
+        window.onscroll = () => {
+            menu.classList.remove('active');
+            search.classList.remove('active');
+
+        }
+        //header
+        let header = document.querySelector('header');
+
+
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('shadow', window.scrollY > 0);
+
+        });
+    </script>
+</body>
+</html>

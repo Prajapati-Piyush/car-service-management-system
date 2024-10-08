@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Packages</title>
+    <link rel="stylesheet" href="/model.css"> <!-- Update this path as per your project structure -->
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Scheduled Packages</h1>
+
+        <!-- Standard Service -->
+        <div class="service-package position-relative">
+            <div class="recommended">RECOMMENDED</div>
+            <img src="/img/p1.jpg" alt="Standard Service">
+            <div class="service-content">
+                <h2>Standard Service</h2>
+                <p>1000 Kms or 1 Month Warranty • Every 10,000 Kms or 6 Months (Recommended)</p>
+                <ul class="service-list">
+                    <li>Car Scanning</li>
+                    <li>Battery Water Top up</li>
+                    <li>Interior Vacuuming (Carpet & Seats)</li>
+                    <li>Wiper Fluid Replacement</li>
+                    <li>Car Wash</li>
+                    <!-- Hidden Services -->
+                    <li class="extra-service hidden">Brake Fluid Check</li>
+                    <li class="extra-service hidden">Engine Oil Check</li>
+                    <li class="extra-service hidden">AC Filter Cleaning</li>
+                    <li class="extra-service hidden">Tire Pressure Check</li>
+                    <li class="extra-service hidden">Light Bulb Inspection</li>
+                </ul>
+                <a href="#" class="view-more">+ 5 more View All</a>
+            </div>
+            <div class="price-time-container">
+                <div class="price">
+                    <p><s>Rs. 5527</s> <strong>₹ 3869</strong></p>
+                </div>
+                <div class="time-taken">
+                    <p>6 Hrs Taken</p>
+                </div>
+                <button class="proceed-button" data-service="Standard Service" data-price="3869">Proceed to Booking</button>
+            </div>
+        </div>
+
+        <!-- Basic Service -->
+        <div class="service-package">
+            <img src="/img/p2.jpeg" alt="Basic Service">
+            <div class="service-content">
+                <h2>Basic Service</h2>
+                <p>1000 Kms or 1 Month Warranty • Every 5000 Kms or 3 Months (Recommended)</p>
+                <ul class="service-list">
+                    <li>Wiper Fluid Replacement</li>
+                    <li>Car Wash</li>
+                    <li>Engine Oil Replacement</li>
+                    <li>Battery Water Top up</li>
+                    <li>Interior Vacuuming (Carpet & Seats)</li>
+                    <!-- Hidden Services -->
+                    <li class="extra-service hidden">Fuel Filter Check</li>
+                    <li class="extra-service hidden">Radiator Fluid Check</li>
+                    <li class="extra-service hidden">Tire Rotation</li>
+                </ul>
+                <a href="#" class="view-more">+ 3 more View All</a>
+            </div>
+            <div class="price-time-container">
+                <div class="price">
+                    <p><s>Rs. 4359</s> <strong>₹ 3269</strong></p>
+                </div>
+                <div class="time-taken">
+                    <p>4 Hrs Taken</p>
+                </div>
+                <button class="proceed-button" data-service="Basic Service" data-price="3269">Proceed to Booking</button>
+            </div>
+        </div>
+
+        <!-- Comprehensive Service -->
+        <div class="service-package">
+            <img src="/img/p6.jpeg" alt="Comprehensive Service">
+            <div class="service-content">
+                <h2>Comprehensive Service</h2>
+                <p>1000 Kms or 1 Month Warranty • Every 20000 Kms or 12 Months (Recommended)</p>
+                <ul class="service-list">
+                    <li>AC Filter Replacement</li>
+                    <li>Gear Oil Top Up</li>
+                    <li>Wiper Fluid Replacement</li>
+                    <li>Car Wash</li>
+                    <li>Engine Oil Replacement</li>
+                    <li>Battery Water Top up</li>
+                    <li>Interior Vacuuming (Carpet & Seats)</li>
+                    <!-- Hidden Services -->
+                    <li class="extra-service hidden">Fuel Filter Check</li>
+                    <li class="extra-service hidden">Radiator Fluid Check</li>
+                    <li class="extra-service hidden">Tire Rotation</li>
+                    <li class="extra-service hidden">Brake Fluid Top Up</li>
+                    <li class="extra-service hidden">Engine Flushing</li>
+                </ul>
+                <a href="#" class="view-more">+ 5 more View All</a>
+            </div>
+            <div class="price-time-container">
+                <div class="price">
+                    <p><s>Rs. 8456</s> <strong>₹ 5919</strong></p>
+                </div>
+                <div class="time-taken">
+                    <p>8 Hrs Taken</p>
+                </div>
+                <button class="proceed-button" data-service="Comprehensive Service" data-price="5919">Proceed to Booking</button>
+            </div>
+        </div>
+        <% services.forEach(service=> { %>
+            <div class="service-package">
+                <img src="<%= service.imagePath %>" alt="<%= service.name %>">
+                <div class="service-content">
+                    <h2>
+                        <%= service.name %>
+                    </h2>
+                    <p>
+                        <%= service.description %>
+                    </p>
+                    <ul class="service-list">
+                        <% service.features.forEach(feature=> { %>
+                            <li>
+                                <%= feature %>
+                            </li>
+                            <% }); %>
+                    </ul>
+                    <a href="#" class="view-more">+ View All</a>
+                </div>
+                <div class="price-time-container">
+                    <div class="price">
+                        <p><s>Rs. <%= service.originalPrice %></s> <strong>₹ <%= service.discountedPrice %></strong></p>
+                    </div>
+                    <div class="time-taken">
+                        <p>
+                            <%= service.timeTaken %> Hrs Taken
+                        </p>
+                    </div>
+                    <button class="proceed-button" data-service="<%= service.name %>"
+                        data-price="<%= service.discountedPrice %>">Proceed to Booking</button>
+                </div>
+            </div>
+            <% }); %>
+
+    </div>
+
+    <script>
+        // Function to handle the "View More" toggle
+        function toggleViewMore(button, serviceList) {
+            const extraServices = serviceList.querySelectorAll('.extra-service');
+            extraServices.forEach(service => {
+                service.classList.toggle('hidden');
+            });
+
+            // Change the button text depending on the visibility of the services
+            if (button.textContent.includes('View All')) {
+                button.textContent = '- View Less';
+            } else {
+                button.textContent = `+ ${extraServices.length} more View All`;
+            }
+        }
+
+        // Event listener for all "Proceed to Booking" buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            const proceedButtons = document.querySelectorAll('.proceed-button');
+
+            // Add to cart functionality
+            proceedButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const serviceName = this.getAttribute('data-service');
+                    const servicePrice = this.getAttribute('data-price');
+
+                    // Store the selected service in sessionStorage
+                    sessionStorage.setItem('selectedService', serviceName);
+                    sessionStorage.setItem('selectedPrice', servicePrice);
+
+                    // Redirect to the booking page
+                    window.location.href = '/booking'; // Update this to your booking page URL
+                });
+            });
+
+            // View more functionality
+            const viewMoreButtons = document.querySelectorAll('.view-more');
+            viewMoreButtons.forEach(button => {
+                button.addEventListener('click', function(event) {
+                    event.preventDefault(); // Prevent default link behavior
+                    const serviceList = this.previousElementSibling;
+                    toggleViewMore(this, serviceList);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

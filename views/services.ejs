@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Service</title>
+    <link rel="stylesheet" href="/services.css">
+</head>
+<body>
+    <div class="form-container">
+        <div class="quote-box">
+            <h1>Experience The Best Car Services</h1>
+            <p>Get instant quotes for your car service</p>
+            <form id="carServiceForm" method="GET" action="">
+                <div class="dropdown">
+                    <label for="make">Car Make</label>
+                    <select id="make" name="make" onchange="updateModels()">
+                        <option value="">Select Car Make</option>
+                        <option value="hyundai">Hyundai</option>
+                        <option value="maruti">Maruti</option>
+                        <option value="toyota">Toyota</option>
+                        
+                    </select>
+                </div>
+                <div class="dropdown">
+                    <label for="model">Car Model</label>
+                    <select id="model" name="model">
+                        <option value="">Select Car Model</option>
+                        <!-- Models will be dynamically updated here -->
+                    </select>
+                </div>
+                <button type="button" class="btn-quote" onclick="submitForm()">Check Car Services</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const carModels = {
+            hyundai: ["Creta", "i20", "Venue",],
+            maruti: ["Swift", "WagonR", "Ertiga"],
+            toyota: ["Innova", "Fortuner", "Yaris"],
+           
+        };
+
+        function updateModels() {
+            const make = document.getElementById('make').value;
+            const modelDropdown = document.getElementById('model');
+
+            // Clear previous models
+            modelDropdown.innerHTML = '<option value="">Select Car Model</option>';
+
+            if (carModels[make]) {
+                carModels[make].forEach(model => {
+                    const option = document.createElement('option');
+                    option.value = model.toLowerCase();
+                    option.text = model;
+                    modelDropdown.appendChild(option);
+                });
+            }
+        }
+
+        function submitForm() {
+            const make = document.getElementById('make').value;
+            const model = document.getElementById('model').value;
+
+            if (make && model) {
+                // Store selected car make and model in sessionStorage
+                sessionStorage.setItem('carMake', make);
+                sessionStorage.setItem('carModel', model);
+
+                // Redirect to service selection page
+                window.location.href =`/${model}`; // Adjust the URL as needed
+            } else {
+                alert("Please select both a car make and model.");
+            }
+        }
+    </script>
+</body>
+</html>

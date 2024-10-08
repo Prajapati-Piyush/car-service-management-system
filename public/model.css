@@ -1,0 +1,172 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+/* Service Package Card */
+.service-package {
+    display: flex;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    align-items: flex-start;
+    justify-content: space-between;
+    position: relative;
+}
+
+.service-package img {
+    width: 250px;
+    height: auto;
+    max-height: 255px;
+    border-radius: 5px;
+}
+
+/* Service Content */
+.service-content {
+    flex-grow: 1;
+    padding-left: 20px;
+}
+
+.service-content h2 {
+    font-size: 22px;
+    margin: 0 0 10px 0;
+}
+
+.service-content p {
+    margin: 0 0 10px 0;
+    color: #777;
+    font-size: 14px;
+}
+
+/* Updated Service List Styles */
+.service-content ul {
+    list-style-type: none; /* Remove default bullet points */
+    padding: 0;
+    margin: 10px 0;
+}
+
+.service-content ul li {
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #333;
+    position: relative; /* Positioning for the check icon */
+    padding-left: 25px; /* Space for the check icon */
+}
+
+.service-content ul li::before {
+    content: '✔'; /* Check mark character */
+    position: absolute; /* Position it absolutely */
+    left: 0; /* Align to the left */
+    color: green; /* Color of the check icon */
+    font-size: 18px; /* Adjust size if needed */
+    line-height: 1; /* Center the icon vertically */
+}
+
+.service-content ul li a {
+    color: green;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.service-content ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Price and Time Taken Section */
+.price-time-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+    width: 200px;
+}
+
+.price-time-container .price {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.price-time-container .price s {
+    color: #999;
+}
+
+.price-time-container .price strong {
+    font-size: 22px;
+    color: #e60000;
+}
+
+.price-time-container .time-taken {
+    font-size: 14px;
+    color: black;
+}
+
+.price-time-container button {
+    background-color: #e60000;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+.price-time-container button:hover {
+    background-color: #cc0000;
+}
+
+.time-taken{
+    background-color: #778;
+    padding: 0px 7px;
+    border-radius: 5px;
+
+}
+
+
+/* Recommended Tag */
+.recommended {
+    background-color: green;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Styling for the 'View More' link */
+.view-more {
+    display: inline-block;
+    margin-top: 10px;
+    color: green;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.view-more:hover {
+    text-decoration: underline;
+}
+

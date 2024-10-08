@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100">
+
+    <!-- Sidebar and Navbar -->
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <div class="bg-gray-800 w-64 min-h-full p-6">
+            <h1 class="text-white text-2xl font-semibold mb-6">Admin Dashboard</h1>
+            <nav>
+                <a href="#dashboard"
+                    class="block text-gray-300 hover:bg-gray-700 hover:text-white px-4 py-2 rounded-md mb-2">Dashboard</a>
+                <a href="#services"
+                    class="block text-gray-300 hover:bg-gray-700 hover:text-white px-4 py-2 rounded-md mb-2">Manage
+                    Services</a>
+                <!-- <a href="#mechanics"
+                    class="block text-gray-300 hover:bg-gray-700 hover:text-white px-4 py-2 rounded-md mb-2">Manage
+                    Mechanics</a> -->
+                <a href="#customers"
+                    class="block text-gray-300 hover:bg-gray-700 hover:text-white px-4 py-2 rounded-md mb-2">Customer
+                    Details</a>
+                <a href="#profits"
+                    class="block text-gray-300 hover:bg-gray-700 hover:text-white px-4 py-2 rounded-md">Total
+                    Profits</a>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-grow p-6">
+            <!-- Dashboard Overview -->
+            <section id="dashboard" class="mb-6">
+                <!-- Top Navbar -->
+                <div class="flex justify-between items-center bg-white p-4 rounded shadow-md mb-6">
+                    <h2 class="text-2xl font-semibold">Welcome, Admin!</h2>
+                    <div class="text-gray-600">September 27, 2024</div>
+                </div>
+
+                <!-- Dashboard Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-blue-500 text-white p-6 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-semibold">Total Bookings</h3>
+                        <p class="text-3xl font-bold mt-4">
+                            <%= totalBookings %>
+                        </p>
+                    </div>
+                    <div class="bg-green-500 text-white p-6 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-semibold">Total customers</h3>
+                        <p class="text-3xl font-bold mt-4">
+                            <%= totalCustomers %>
+                        </p>
+                    </div>
+                    <div class="bg-yellow-500 text-white p-6 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-semibold">Total Profit</h3>
+                        <p class="text-3xl font-bold mt-4">
+                            <%= totalProfit %>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Manage Services -->
+            <section id="services" class="hidden mb-6">
+
+                <button onclick="toggleForm()"
+                    class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg">
+                    Add Service
+                </button>
+
+                <table class="min-w-full bg-white border border-gray-300 rounded-lg shadow-md">
+                    <thead class="bg-gray-100">
+                        <tr>
+                            <th class="py-2 px-4 border-b text-left text-gray-600 font-semibold">Service Name</th>
+                            <th class="py-2 px-4 border-b text-left text-gray-600 font-semibold">Description</th>
+                            <th class="py-2 px-4 border-b text-left text-gray-600 font-semibold">Price</th>
+                            <th class="py-2 px-4 border-b text-center text-gray-600 font-semibold">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% services.forEach(function(service) { %>
+                            <tr>
+                                <td class="py-2 px-4 border-b">
+                                    <%= service.name %>
+                                </td>
+                                <td class="py-2 px-4 border-b">
+                                    <%= service.description %>
+                                </td>
+                                <td class="py-2 px-4 border-b">
+                                    <%= service.discountedPrice %>
+                                </td>
+                                <td class="py-2 px-4 border-b text-center">
+                                    <!-- Remove Service Button -->
+                                    <form action="/admin/remove-service/<%= service._id %>" method="POST" class="inline-block" onsubmit="return confirm('Are you sure you want to remove this service?');">
+                                        <button type="submit" class="bg-red-500 hover:bg-red-600 text-white py-1 px-2 rounded-lg">
+                                            Remove
+                                        </button>
+                                    </form>
+                                    
+                                    
+                                </td>
+                            </tr>
+                            <% }); %>
+                    </tbody>
+                </table>
+
+                <div id="addServiceForm" class="mt-8 bg-white p-6 rounded-lg shadow-md hidden">
+                    <h3 class="text-2xl font-semibold text-gray-700 mb-4">Add New Service</h3>
+                    <form id="serviceForm" action="/admin/add-service" method="POST" enctype="multipart/form-data"
+                        class="mb-4">
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700">Service Name</label>
+                            <input type="text" name="serviceName" required
+                                class="w-full p-2 border border-gray-300 rounded mt-1" placeholder="Enter Service Name">
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700">Service Description</label>
+                            <textarea name="serviceDescription" required
+                                class="w-full p-2 border border-gray-300 rounded mt-1"
+                                placeholder="Enter Service Description"></textarea>
+                        </div>
+
+                        <!-- Image Upload Section -->
+                        <div>
+                            <label for="serviceImage">Upload Image</label>
+                            <input type="file" id="serviceImage" name="serviceImage" accept="image/*" required>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700">Original Price</label>
+                            <input type="number" name="originalPrice" required
+                                class="w-full p-2 border border-gray-300 rounded mt-1"
+                                placeholder="Enter Original Price">
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700">Discounted Price</label>
+                            <input type="number" name="discountedPrice" required
+                                class="w-full p-2 border border-gray-300 rounded mt-1"
+                                placeholder="Enter Discounted Price">
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700">Time Taken (Hours)</label>
+                            <input type="number" name="timeTaken" required
+                                class="w-full p-2 border border-gray-300 rounded mt-1" placeholder="Enter Time Taken">
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700">Features (comma separated)</label>
+                            <input type="text" name="features" required
+                                class="w-full p-2 border border-gray-300 rounded mt-1" placeholder="Enter Features">
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700">Car Make</label>
+                            <select id="carMake" name="carMake" required
+                                class="w-full p-2 border border-gray-300 rounded mt-1" onchange="updateCarModels()">
+                                <option value="">Select Car Make</option>
+                                <option value="hyundai">Hyundai</option>
+                                <option value="maruti">Maruti</option>
+                                <option value="toyota">Toyota</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700">Car Model</label>
+                            <select id="carModel" name="carModel" required
+                                class="w-full p-2 border border-gray-300 rounded mt-1">
+                                <option value="">Select Car Model</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Add Service</button>
+                    </form>
+                </div>
+
+
+            </section>
+
+            <!-- Customer Details -->
+            <section id="customers" class="hidden mb-6">
+                <div class="bg-white p-6 rounded-lg shadow-md overflow-hidden">
+                    <h3 class="text-2xl font-semibold mb-4">Customer Details</h3>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full table-auto border border-collapse">
+                            <thead>
+                                <tr class="bg-gray-200 text-gray-600">
+                                    <th class="px-2 py-2 border text-left text-sm">Customer Name</th>
+                                    <th class="px-2 py-2 border text-left text-sm">Email</th>
+                                    <th class="px-2 py-2 border text-left text-sm">Phone Number</th>
+                                    <th class="px-2 py-2 border text-left text-sm">Address</th>
+                                    <th class="px-2 py-2 border text-left text-sm">Car Make</th>
+                                    <th class="px-2 py-2 border text-left text-sm">Car Model</th>
+                                    <th class="px-2 py-2 border text-left text-sm">Vehicle Number</th>
+                                    <th class="px-2 py-2 border text-left text-sm">Service Booked</th>
+                                    <th class="px-2 py-2 border text-left text-sm">Service Price</th>
+                                    <th class="px-2 py-2 border text-left text-sm">Pick-Up Price</th>
+                                    <th class="px-2 py-2 border text-left text-sm">Service Date</th>
+                                    <th class="px-2 py-2 border text-left text-sm">Pickup Address</th>
+                                    <th class="px-2 py-2 border text-left text-sm">Total Payment</th>
+                                    <th class="px-2 py-2 border text-left text-sm">Booking Date</th>
+                                    <th class="px-2 py-2 border text-left text-sm">Payment Status</th>
+                                    <th class="px-2 py-2 border text-left text-sm">Service Status</th>
+                                    <th class="px-2 py-2 border text-left text-sm">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% recentBookings.forEach(booking=> { %>
+                                    <tr class="hover:bg-gray-100">
+                                        <td class="px-2 py-2 border text-sm">
+                                            <%= booking.username %>
+                                        </td>
+                                        <td class="px-2 py-2 border text-sm">
+                                            <%= booking.email %>
+                                        </td>
+                                        <td class="px-2 py-2 border text-sm">
+                                            <%= booking.mobile_no %>
+                                        </td>
+                                        <td class="px-2 py-2 border text-sm">
+                                            <%= booking.address %>
+                                        </td>
+                                        <td class="px-2 py-2 border text-sm">
+                                            <%= booking.carMake %>
+                                        </td>
+                                        <td class="px-2 py-2 border text-sm">
+                                            <%= booking.carModel %>
+                                        </td>
+                                        <td class="px-2 py-2 border text-sm">
+                                            <%= booking.vehicle_no %>
+                                        </td>
+                                        <td class="px-2 py-2 border text-sm">
+                                            <%= booking.servicePackage %>
+                                        </td>
+                                        <td class="px-2 py-2 border text-sm">
+                                            <%= booking.servicePrice %>
+                                        </td>
+                                        <td class="px-2 py-2 border text-sm">
+                                            <%= booking.pickUpPrice %>
+                                        </td>
+                                        <td class="px-2 py-2 border text-sm">
+                                            <%= booking.time %>
+                                        </td>
+                                        <td class="px-2 py-2 border text-sm">
+                                            <%= booking.pickUpAdd %>
+                                        </td>
+                                        <td class="px-2 py-2 border text-sm">
+                                            <%= booking.totalPay %>
+                                        </td>
+                                        <td class="px-2 py-2 border text-sm">
+                                            <%= booking.time %>
+                                        </td>
+
+                                        <!-- Payment Status Dropdown -->
+                                        <td class="px-2 py-2 border text-sm">
+                                            <select class="border p-1 rounded text-xs"
+                                                id="payment-status-<%= booking._id %>"
+                                                onchange="updateBookingStatus('<%= booking._id %>', this.value, document.getElementById('service-status-<%= booking._id %>').value)">
+                                                <option value="Pending" <%=booking.paymentStatus==='Pending'
+                                                    ? 'selected' : '' %>>Pending</option>
+                                                <option value="Completed" <%=booking.paymentStatus==='Completed'
+                                                    ? 'selected' : '' %>>Completed</option>
+                                                <option value="Failed" <%=booking.paymentStatus==='Failed' ? 'selected'
+                                                    : '' %>>Failed</option>
+                                            </select>
+                                        </td>
+
+                                        <!-- Service Status Dropdown -->
+                                        <td class="px-2 py-2 border text-sm">
+                                            <select class="border p-1 rounded text-xs"
+                                                id="service-status-<%= booking._id %>"
+                                                onchange="updateBookingStatus('<%= booking._id %>', document.getElementById('payment-status-<%= booking._id %>').value, this.value)">
+                                                <option value="Pending" <%=booking.serviceStatus==='Pending'
+                                                    ? 'selected' : '' %>>Pending</option>
+                                                <option value="In Progress" <%=booking.serviceStatus==='In Progress'
+                                                    ? 'selected' : '' %>>In Progress</option>
+                                                <option value="Completed" <%=booking.serviceStatus==='Completed'
+                                                    ? 'selected' : '' %>>Completed</option>
+                                                <option value="Cancelled" <%=booking.serviceStatus==='Cancelled'
+                                                    ? 'selected' : '' %>>Cancelled</option>
+                                            </select>
+                                        </td>
+
+
+                                        <!-- Delete Button -->
+                                        <td class="px-2 py-2 border text-sm flex flex-col space-y-1">
+                                            <form action="/admin/delete-booking/<%= booking._id %>" method="POST"
+                                                class="inline">
+                                                <button type="submit"
+                                                    class="text-red-600 hover:text-red-800 text-xs">Delete</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    <% }) %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Total Profits -->
+            <section id="profits" class="hidden mb-6">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-semibold mb-4">Total Profits</h3>
+                    <div class="text-lg">
+                        <span class="font-bold">Total Profit: </span>
+                        <%= totalProfit %>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Simple Script to Show/Hide Sections Based on Nav Click -->
+    <script>
+
+        function toggleForm() {
+            const form = document.getElementById('addServiceForm');
+            form.classList.toggle('hidden');
+        }
+
+        const sections = document.querySelectorAll('section');
+        document.querySelectorAll('nav a').forEach(nav => {
+            nav.addEventListener('click', function (e) {
+                e.preventDefault();
+                sections.forEach(section => section.classList.add('hidden'));
+                const target = this.getAttribute('href').replace('#', '');
+                document.getElementById(target).classList.remove('hidden');
+            });
+        });
+
+        function updateBookingStatus(bookingId, paymentStatus, serviceStatus) {
+            // Prepare the data object with the status updates
+            const data = {};
+            if (paymentStatus) data.paymentStatus = paymentStatus; // Add payment status if provided
+            if (serviceStatus) data.serviceStatus = serviceStatus; // Add service status if provided
+
+            if (Object.keys(data).length === 0) return; // Prevent if no status selected
+
+            fetch(`/admin/update-booking-status/${bookingId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Status updated successfully!');
+                    } else {
+                        alert('Failed to update status.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error updating status:', error);
+                });
+        }
+
+        const carModels = {
+            hyundai: ["Creta", "i20", "Venue"],
+            maruti: ["Swift", "WagonR", "Ertiga"],
+            toyota: ["Innova", "Fortuner", "Yaris"],
+        };
+
+        function updateCarModels() {
+            const makeSelect = document.getElementById('carMake');
+            const modelSelect = document.getElementById('carModel');
+            const selectedMake = makeSelect.value;
+
+            // Clear previous models
+            modelSelect.innerHTML = '<option value="">Select Car Model</option>';
+
+            // If a make is selected, populate the models
+            if (selectedMake && carModels[selectedMake]) {
+                carModels[selectedMake].forEach(model => {
+                    const option = document.createElement('option');
+                    option.value = model;
+                    option.textContent = model;
+                    modelSelect.appendChild(option);
+                });
+            }
+        }
+
+
+
+    </script>
+</body>
+
+</html>

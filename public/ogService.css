@@ -1,0 +1,133 @@
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+header{
+  z-index: 100;
+  background-color: #ffff;
+}
+.navbar a:hover,
+.navbar .active{
+    color: var(--main-color);
+    border-bottom: 3px solid var(--main-color);
+}
+#menu-icon{
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--text-color);
+  display: none;
+}
+
+h1 {
+  font-size: 50px;
+  line-height: 64px;
+  color: #222;
+  margin-top: 50px;
+}
+h2 {
+  font-size: 46px;
+  line-height: 54px;
+  color: #222;
+}
+h4 {
+  font-size: 18px;
+  color: #222;
+}
+h6 {
+  font-weight: 700;
+  font-size: 12px;
+}
+p {
+  font-size: 16px;
+  color: #d90429;
+  margin: 15px 0 20px 0;
+}
+.section-p1 {
+  padding: 40px 0;
+}
+.section-m1 {
+  margin: 40px 0;
+}
+
+button.normal {
+  font-size: 14px;
+  font-weight: 600px;
+  padding: 15px 30px;
+  color: #000;
+  background-color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: 0.2s;
+}
+button.normal:hover {
+  background-color: #222;
+  color: #fff;
+}
+body {
+  width: 100%;
+  background-color: #fff;
+}
+
+/* header styles */
+/* feature section styles */
+.product-section{
+    padding-top: 20px;
+}
+
+.product-section .pro-collection {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 0px 60px;
+}
+.product-section h1,
+.product-section p {
+  text-align: center;
+}
+.product-section .product-cart {
+  width: 360px;
+  border: 1px solid #ebebeb;
+  padding: 13px;
+  margin-bottom: 30px;
+  border-radius: 3px;
+  position: relative;
+  box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.02);
+  transition: box-shadow 0.2s;
+}
+.product-section .product-cart:hover {
+  box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.06);
+}
+.product-section .product-cart img {
+  width: 100%;
+  border-radius: 3px;
+}
+.product-section .product-cart span {
+  color: #969696;
+  font-weight: 500;
+  line-height: 30px;
+}
+.product-section .product-cart h4 {
+    padding-top:20px;
+  font-size: 22px;
+  color: rgb(41, 41, 41);
+}
+.product-section .product-cart .stars {
+  color: #e6ae2c;
+  padding: 6px 0;
+}
+.product-section .product-cart .price {
+  color: #222;
+  padding: 4px 0;
+}
+.product-section .product-cart .buy-icon {
+  color: #222;
+  background-color: #c7e9e75e;
+  padding: 15px;
+  border-radius: 50px;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+.copyright p {
+  color: #969696;
+}

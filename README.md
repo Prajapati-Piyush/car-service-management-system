@@ -1,1 +1,2 @@
-The Car Service Management System is a user-friendly web platform designed to streamline the booking, tracking, and management of car services. This system aims to enhance the overall experience for both customers and service providers by providing an intuitive interface and efficient workflow.
+# car-service-management-system
+A user-friendly web platform designed to streamline the booking, tracking, and management of car services. Whether you're a customer looking to schedule an appointment or an admin managing services, this system provides a seamless experience.

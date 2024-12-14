@@ -40,11 +40,3 @@ Before running the application, ensure that you have the following installed:
 ```bash
 git clone https://github.com/yourusername/carservice-management.git
 cd carservice-management
-
-
-
-
-
-
-
-

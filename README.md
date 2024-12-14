@@ -41,7 +41,6 @@ Before running the application, ensure that you have the following installed:
 git clone https://github.com/yourusername/carservice-management.git
 cd carservice-management
 
-![image](https://github.com/user-attachments/assets/3204061e-7f73-4d2e-a93b-90cbbde2049e)
 
 
 

@@ -40,13 +40,12 @@ Before running the application, ensure that you have the following installed:
 ```bash
 git clone https://github.com/yourusername/carservice-management.git
 cd carservice-management
-cd backend
-npm install
-cd ../frontend
-npm install
 
-![image](https://github.com/user-attachments/assets/9a55e4c7-9926-49dd-8bdb-576e85b4810e)
-![image](https://github.com/user-attachments/assets/bf58d4ca-c07e-4930-b5a4-eaba0916dd9d)
+![image](https://github.com/user-attachments/assets/3204061e-7f73-4d2e-a93b-90cbbde2049e)
+
+
+
+
 
 
 

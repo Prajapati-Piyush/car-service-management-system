@@ -31,6 +31,11 @@ const bookingSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
+    name: {
+        type: String,
+        required: true,
+        trime: true,
+    },
     email: {
         type: String,
         required: true,

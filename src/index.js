@@ -96,7 +96,9 @@ app.get("/admin", isAdmin, async (req, res) => {
         const totalBookings = await Booking.countDocuments();
         const services = await Service.find({});
 
-        const totalCustomers = await Booking.distinct('email').countDocuments();
+        const uniqueCustomerEmails = await Booking.distinct('email');
+        const totalCustomers = uniqueCustomerEmails.length;
+
 
         const recentBookings = await Booking.find().sort({ time: -1 }).limit(10);
         const totalProfitData = await TotalProfit.findOne();

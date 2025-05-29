@@ -264,6 +264,8 @@ app.get('/viewAppointment', isAuthenticated, async (req, res) => {
     try {
         // Fetch Booking for the authenticated user
         const bookings = await Booking.find({ username: req.session.user.name });
+        console.log('Session user:', req.session.user);
+
         // const bookings = await Booking.find({ username: req.body.name });
 
         // Render the appointments page with the fetched data

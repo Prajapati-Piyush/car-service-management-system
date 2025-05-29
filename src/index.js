@@ -223,7 +223,7 @@ app.post("/booking", isAuthenticated, async (req, res) => {
         // Create a new booking object from the request body
         const newBooking = {
             username: req.session.user.name,
-            name:req.body.name,
+            name: req.body.name,
             email: req.body.email,
             mobile_no: req.body.phone,
             address: req.body.address,
@@ -266,8 +266,6 @@ app.get('/viewAppointment', isAuthenticated, async (req, res) => {
         // Fetch Booking for the authenticated user
         const bookings = await Booking.find({ username: req.session.user.name });
         console.log('Session user:', req.session.user);
-
-        // const bookings = await Booking.find({ username: req.body.name });
 
         // Render the appointments page with the fetched data
         res.render('viewAppointment', { bookings, username: req.session.user.name });

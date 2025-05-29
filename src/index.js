@@ -222,7 +222,8 @@ app.post("/booking", isAuthenticated, async (req, res) => {
     try {
         // Create a new booking object from the request body
         const newBooking = {
-            username: req.body.name,
+            username: req.session.user.name,
+            name:req.body.name,
             email: req.body.email,
             mobile_no: req.body.phone,
             address: req.body.address,

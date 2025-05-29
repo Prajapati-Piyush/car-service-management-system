@@ -269,7 +269,7 @@ app.get('/viewAppointment', isAuthenticated, async (req, res) => {
         // const bookings = await Booking.find({ username: req.body.name });
 
         // Render the appointments page with the fetched data
-        res.render('viewAppointment', { bookings });
+        res.render('viewAppointment', { bookings, username: req.session.user.name });
     } catch (error) {
         console.error('Error fetching appointments:', error);
         res.status(500).send('Error fetching appointments');

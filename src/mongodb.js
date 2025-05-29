@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 // const mongoURI = "mongodb+srv://anandpandey1765:AYv5hDWMmvcJ4Ziz@carservicesdb.iijjd.mongodb.net/?retryWrites=true&w=majority&appName=CarServicesDB";
-const mongoURI = "mongodb+srv://anandpandey1765:AYv5hDWMmvcJ4Ziz@carservicesdb.iijjd.mongodb.net/?retryWrites=true&w=majority&appName=CarServicesDB";
+const mongoURI = "mongodb+srv://53a12thpiy:TJQPzW5iHa008hSq@cluster0.5z2iz1b.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 mongoose.connect(mongoURI)
     .then(() => {
         console.log("MongoDB connected");
